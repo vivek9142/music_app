@@ -1,12 +1,13 @@
 import {makeStyles,Card,CardActionArea,CardContent,Typography,CardMedia,CardActions,Button} from '@material-ui/core';
 
-const SongsList = ({data,...props}) => {
+const SongsList = ({data,search,...props}) => {
     const classes = useStyles();
+    const newData = data.filter(item => item.title.includes(search));
     
     return (
         <>
         {
-        data.map(item => (
+        newData.map(item => (
         <Card key={item.id} className={classes.card}>
             <CardActionArea className={classes.card_action_area}>
                 <CardMedia
@@ -38,7 +39,7 @@ const SongsList = ({data,...props}) => {
 }
 const useStyles = makeStyles(({
     card:{
-        marginBottom:'1rem'
+        margin:'1.5rem 5rem'
     },
     card_action_area:{
         textAlign:'start',
@@ -46,7 +47,7 @@ const useStyles = makeStyles(({
         justifyContent:'flex-start'
     },
     card_img:{
-        height:'6rem',
+        height:'100%',
         width:'9rem'
     },
     card_content:{

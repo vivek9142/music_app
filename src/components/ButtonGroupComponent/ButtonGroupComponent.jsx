@@ -1,12 +1,12 @@
 import { Button,ButtonGroup,makeStyles } from "@material-ui/core"
 
-const ButtonGroupComponent = () => {
+const ButtonGroupComponent = (props) => {
     const classes = useStyles();
     
     return (
         <ButtonGroup className={classes.button_grp} variant="contained" color="primary" aria-label="contained primary button group">
-            <Button className={classes.button}>All Songs</Button>
-            <Button className={classes.button}>Playist</Button>
+            <Button className={classes.button} onClick={()=> props.onClick('AllSongs')}>All Songs</Button>
+            <Button className={classes.button} onClick={()=> props.onClick('Playist')}>Playist</Button>
         </ButtonGroup>
     )
 }

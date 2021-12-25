@@ -1,12 +1,18 @@
 import AllSongs from '../../components/AllSongs/AllSongs.component';
 import {makeStyles,CssBaseline} from '@material-ui/core';
-import FormComponent from '../../components/Form/Form.component';
+import { useState } from 'react';
 import NavBar from '../../components/NavBar/NavBar.component';
 import ButtonGroupComponent from '../../components/ButtonGroupComponent/ButtonGroupComponent';
+import Playist from '../../components/Playist/Playist.component';
 
 const HomePage = () => {
     const classes = useStyles();
-    
+    const [showComponent,setshowComponent] = useState('AllSongs');
+
+    const handleChangeComponent = (comp) => {
+        if(showComponent === comp) return;
+        else setshowComponent(comp)
+    }
     return(
         <>
         <NavBar/>
@@ -14,16 +20,12 @@ const HomePage = () => {
             <CssBaseline/>
 
             <div className={classes.button_group_container}>
-                <ButtonGroupComponent/>
+                <ButtonGroupComponent onClick={handleChangeComponent}/>
             </div>
-
-            {/* <div className=''> */}
-            <FormComponent />
-            {/* </div> */}
             
 
             <div className={classes.songs_container}>
-                <AllSongs/>
+                {showComponent==='AllSongs' ? (<AllSongs/>) : (<Playist/>)}
             </div>
 
         </div>
@@ -33,7 +35,7 @@ const HomePage = () => {
 
 const useStyles = makeStyles(({
     songs_container:{
-        margin: '1rem 2rem'
+        margin: '3rem 2rem'
     },
     button_group_container:{
         margin: '2rem 0'

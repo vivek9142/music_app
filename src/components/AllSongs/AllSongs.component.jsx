@@ -1,16 +1,18 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { getData, getFinalData, setFinalData} from '../../redux/actionCreators/dataActionCr';
 import { useDispatch,useSelector } from "react-redux";
 import SongsList from '../SongsList/SongsList.component';
-import { Typography } from "@material-ui/core";
-
+import { Typography,makeStyles } from "@material-ui/core";
+import FormComponent from "../Form/Form.component";
 
 const AllSongs = (props) => {
+    const classes = useStyles();
     const dispatch = useDispatch();
     const albums = useSelector(state => state.albums);
     const photos = useSelector(state => state.photos);
     const finalData = useSelector(state => state.finalData);
 
+    const [search,setSearch] = useState('');
 
     useEffect(()=> {
         const getData = async() => {
@@ -28,14 +30,26 @@ const AllSongs = (props) => {
         getData();
     },[getData,photos]);
 
-    
+    const handleFormChange = (val) => {
+        console.log('val',val);
+        setSearch(val);   
+    }
     return (
         <>
-        <Typography variant='h4'>All Songs</Typography>
-        <SongsList data={finalData} />
+        <FormComponent className={classes.form_component} onChange={handleFormChange}/>
+        <Typography variant='h4' className={classes.song_title}>All Songs</Typography>
+        <SongsList data={finalData} search={search}/>
         </>
     )
 };
 
 export default AllSongs;
 
+const useStyles = makeStyles(({
+    form_component:{
+        margin:'3rem'
+    },
+    song_title:{
+        margin: '2rem'
+    }
+}));

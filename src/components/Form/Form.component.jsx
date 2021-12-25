@@ -6,16 +6,16 @@ import {TextField,makeStyles} from '@material-ui/core';
 const FormComponent = (props) => {
     const classes = useStyles();
     const dispatch = useDispatch();
-  const [search,setSearch] = useState('');
+  // const [search,setSearch] = useState('');
 
   const submitHandler = (event) => {
     event.preventDefault();
-    dispatch(setSearchData(search));
+    // dispatch(setSearchData(search));
   }
     return(
         <form onSubmit={submitHandler}>
           <TextField className={classes.input} label='Song name' variant='outlined' type="text" 
-          onChange={(ev)=> setSearch(ev.target.value)} />
+          onChange={(ev)=> { props.onChange(ev.target.value);}} />
       </form>
     )
 }
