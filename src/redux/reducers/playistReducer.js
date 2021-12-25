@@ -13,10 +13,12 @@ const playistReducer = (state=initialState,action) => {
             const date = new Date();
             const time =`${date.getHours>9?date.getHours():'0'+date.getHours()}:${date.getMinutes()>9?date.getMinutes():'0'+date.getMinutes()} , ${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
             const id = Math.random().toString(36).substr(2, 5);
-            let Playist = state.playist.push({id:id,name:action.payload.playistName,createdDate:time,songs:[]})
+            let Playist = state.playist;
+            Playist.push({id:id,name:action.payload.playistName,createdDate:time,songs:[]});
+
             return{
                 ...state,
-                playist: state.playist
+                playist: Playist
             }
         case Actions.ADD_SONG_TO_PLAYIST:
             const playist = state.playist.filter(item => item.id === action.payload.playistId)[0];

@@ -35,6 +35,10 @@ const useStyles = makeStyles(({
     input:{
         background: '#f8f8f8',
         width:'40%'
+    },
+    button:{
+        padding:'0.91rem 2rem',
+        borderRadius: '0 0.5rem 0.5rem 0'
     }
 }));
 
