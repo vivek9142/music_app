@@ -8,9 +8,9 @@ import FormComponent from "../Form/Form.component";
 const AllSongs = (props) => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const albums = useSelector(state => state.albums);
-    const photos = useSelector(state => state.photos);
-    const finalData = useSelector(state => state.finalData);
+    const albums = useSelector(state => state.data.albums);
+    const photos = useSelector(state => state.data.photos);
+    const finalData = useSelector(state => state.data.finalData);
 
     const [search,setSearch] = useState('');
 
@@ -31,12 +31,11 @@ const AllSongs = (props) => {
     },[getData,photos]);
 
     const handleFormChange = (val) => {
-        console.log('val',val);
         setSearch(val);   
     }
     return (
         <>
-        <FormComponent className={classes.form_component} onChange={handleFormChange}/>
+        <FormComponent className={classes.form_component} searchForm onChange={handleFormChange}/>
         <Typography variant='h4' className={classes.song_title}>All Songs</Typography>
         <SongsList data={finalData} search={search}/>
         </>
