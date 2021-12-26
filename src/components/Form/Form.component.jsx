@@ -14,7 +14,7 @@ const FormComponent = (props) => {
     }
     if(props.searchForm)
     return(
-          <TextField className={classes.input} label='Song name' variant='outlined' type="text" 
+          <TextField className={classes.input} style={{marginTop:'1.5rem'}} label='Song name' variant='outlined' type="text" 
           onChange={(ev)=> { props.onChange(ev.target.value);}} />
     )
 
@@ -32,9 +32,12 @@ const FormComponent = (props) => {
 }
 
 const useStyles = makeStyles(({
+    form:{
+        marginTop:'1.5rem'
+    },
     input:{
         background: '#f8f8f8',
-        width:'40%'
+        width:'80%'
     },
     button:{
         padding:'0.91rem 2rem',

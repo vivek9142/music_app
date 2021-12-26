@@ -20,7 +20,7 @@ const HomePage = () => {
             <CssBaseline/>
 
             <div className={classes.button_group_container}>
-                <ButtonGroupComponent onClick={handleChangeComponent}/>
+                <ButtonGroupComponent onClick={handleChangeComponent} comp={showComponent}/>
             </div>
             
 

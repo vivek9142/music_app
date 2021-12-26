@@ -40,13 +40,15 @@ const playistReducer = (state=initialState,action) => {
         case Actions.SHUFFLE_LIST:
             let list = Object.assign([],state.playist);
             let songlist = list.filter(item => item.id === action.payload.playistId)[0];
-            for(let i=songlist.songs.length-1;i>0;i--){
-                let j = Math.floor(Math.random()*(i+1));
-                [songlist.songs[i],songlist.songs[j]] = [songlist.songs[j],songlist.songs[i]];
+            if(songlist.songs.length>1){
+                for(let i=songlist.songs.length-1;i>0;i--){
+                    let j = Math.floor(Math.random()*(i+1));
+                    [songlist.songs[i],songlist.songs[j]] = [songlist.songs[j],songlist.songs[i]];
+                }
             }
             const fullPlyist = list.map(item => item.id === action.payload.playlistId ? songlist : item);
             return Object.assign([],state,{playist:fullPlyist});
-            
+
         default:
             return state;
     }

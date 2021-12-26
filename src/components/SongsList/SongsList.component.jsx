@@ -36,8 +36,8 @@ const SongsList = ({data,search='',...props}) => {
                         </Typography>
                 </CardContent>
                 <CardActions>
-                {props.addtoList ? (<Button size='small' color='primary' onClick={() => addSong(props.playistId,item)}>Add to List</Button>):(<></>)}
-                {props.delete ? (<Button size='small' color='primary' onClick={() => deleteSong(props.playistId,item.id)}>Delete</Button>):(<></>)}
+                {props.addtoList ? (<Button className={classes.button} size='small' variant='contained' color='primary' onClick={() => addSong(props.playistId,item)}>Add</Button>):(<></>)}
+                {props.delete ? (<Button className={classes.button} size='small' variant='contained' color='primary' onClick={() => deleteSong(props.playistId,item.id)}>Delete</Button>):(<></>)}
             </CardActions>
             </div>
             
@@ -61,6 +61,9 @@ const useStyles = makeStyles(({
     },
     card_content:{
         flexBasis:'70%'
+    },
+    button:{
+        marginRight: '1rem'
     }
 }));
 
