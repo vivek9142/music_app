@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import {makeStyles,Card,CardActionArea,CardContent,Typography,CardMedia,CardActions,Button} from '@material-ui/core';
+import {makeStyles,Card,CardActionArea,CardContent,Typography,CardActions} from '@material-ui/core';
 
 const PlayistList = (props) => {
     const classes = useStyles();
@@ -40,10 +40,6 @@ const useStyles = makeStyles(({
         textAlign:'start',
         display:'flex',
         justifyContent:'flex-start'
-    },
-    card_img:{
-        height:'100%',
-        width:'9rem'
     },
     card_content:{
         flexBasis:'50%'

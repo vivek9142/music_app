@@ -12,8 +12,7 @@ const PlayistDetails = ({data,...props}) => {
     const [addSongComp,showAddSongComp] = useState(false);
     const finalData = useSelector(state => state.data.finalData);
     const playistData = useSelector(state => state.playist.playist).filter(item => item.id === data.id)[0];
-    // console.log(playistData);
-    const [origData,setOrigData] = useState(playistData.songs);
+    
 
     const handleFormChange = (val) => {
         setSearch(val);   
@@ -63,12 +62,5 @@ const useStyles = makeStyles(({
     },
     songs_container:{
         marginTop:'2rem',
-    },
-    card_img:{
-        height:'100%',
-        width:'9rem'
-    },
-    card_content:{
-        flexBasis:'50%'
     }
 }));
