@@ -21,10 +21,12 @@ const playistReducer = (state=initialState,action) => {
                 playist: Playist
             }
         case Actions.ADD_SONG_TO_PLAYIST:
-            const playist = state.playist.filter(item => item.id === action.payload.playistId)[0];
-            playist.songs.push({...action.payload.song,addedAt:Date.now()});
-            const updatedPlayist = state.playist.map(item => item.id === action.payload.playistId ? playist : item);
-            return updatedPlayist;
+            const playist = state.playist;
+            const updatedPlayist = playist.filter(item => item.id === action.payload.playistId)[0];
+            if(!(updatedPlayist.songs.filter(item => item.id === action.payload.song.id).length===1))
+            updatedPlayist.songs.push({...action.payload.song,addedAt:Date.now()});
+            const updatePlayist = state.playist.map(item => item.id === action.payload.playistId ? updatedPlayist : item);
+            return {...state,playist:updatePlayist};
         
         default:
             return state;

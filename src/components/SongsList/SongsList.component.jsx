@@ -1,15 +1,21 @@
 import {makeStyles,Card,CardActionArea,CardContent,Typography,CardMedia,CardActions,Button} from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import {addSongsToPlayist} from '../../redux/actionCreators/playistActionCr';
 
-const SongsList = ({data,search,...props}) => {
+const SongsList = ({data,search='',...props}) => {
+    console.log(props.playistId);
+    const dispatch = useDispatch();
     const classes = useStyles();
     const newData = data.filter(item => item.title.includes(search));
-    
+    const addSong = (playistId,item) => {
+        dispatch(addSongsToPlayist(playistId,item))
+    }
     return (
         <>
         {
         newData.map(item => (
         <Card key={item.id} className={classes.card}>
-            <CardActionArea className={classes.card_action_area}>
+            <div className={classes.card_action_area}>
                 <CardMedia
                     component="img"
                     alt="Contemplative Reptile"
@@ -27,10 +33,10 @@ const SongsList = ({data,search,...props}) => {
                         </Typography>
                 </CardContent>
                 <CardActions>
-                {props.addtoList ? (<Button size='small' color='primary'>Add to List</Button>):(<></>)}
+                {props.addtoList ? (<Button size='small' color='primary' onClick={() => addSong(props.playistId,item)}>Add to List</Button>):(<></>)}
                 {props.delete ? (<Button size='small' color='primary'>Delete</Button>):(<></>)}
             </CardActions>
-            </CardActionArea>
+            </div>
             
         </Card>)
         )}

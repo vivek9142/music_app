@@ -4,8 +4,10 @@ import PlayistList from '../PlayistList/PlayistList.component';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Button } from "@material-ui/core";
 import PlayistDetails from "../PlayistDetails/PlayistDetails.component";
+import { useSelector } from "react-redux";
 
 const PlayistMain = () => {
+    // const playists = useSelector(state => state.playist.playist);
     const [playist,setPlayist] = useState({});
 
     const changeHandler = (data={}) => {
