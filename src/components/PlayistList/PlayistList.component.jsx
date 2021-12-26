@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import {makeStyles,Card,CardActionArea,CardContent,Typography,CardMedia,CardActions,Button} from '@material-ui/core';
 
-const Playists = () => {
+const PlayistList = (props) => {
     const classes = useStyles();
     const playists = useSelector(state => state.playist.playist);
 
@@ -9,7 +9,7 @@ const Playists = () => {
         <>
         {
         playists.map(item => (
-        <Card onClick={()=> console.log(item)} key={item.id} className={classes.card}>
+        <Card onClick={()=> props.onChange(item)} key={item.id} className={classes.card}>
             <CardActionArea className={classes.card_action_area}>
                 <CardContent className={classes.card_content}>
                         <Typography gutterBottom variant='h5' component='h2'>
@@ -30,7 +30,7 @@ const Playists = () => {
     )
 }
 
-export default Playists;
+export default PlayistList;
 
 const useStyles = makeStyles(({
     card:{

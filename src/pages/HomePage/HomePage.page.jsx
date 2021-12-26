@@ -3,7 +3,7 @@ import {makeStyles,CssBaseline} from '@material-ui/core';
 import { useState } from 'react';
 import NavBar from '../../components/NavBar/NavBar.component';
 import ButtonGroupComponent from '../../components/ButtonGroupComponent/ButtonGroupComponent';
-import Playist from '../../components/Playist/Playist.component';
+import PlayistMain from '../../components/PlayistMain/PlayistMain.component';
 
 const HomePage = () => {
     const classes = useStyles();
@@ -25,7 +25,7 @@ const HomePage = () => {
             
 
             <div className={classes.songs_container}>
-                {showComponent==='AllSongs' ? (<AllSongs/>) : (<Playist/>)}
+                {showComponent==='AllSongs' ? (<AllSongs/>) : (<PlayistMain/>)}
             </div>
 
         </div>
