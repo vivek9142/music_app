@@ -35,7 +35,7 @@ const playistReducer = (state=initialState,action) => {
             specificPlayist['songs'] = updatedSongs;
             const fullPlayst = [...playlst.map(item => item.id === action.payload.playistId ? specificPlayist : item)];
             
-            return Object.assign([],state,{playist:[...fullPlayst]});
+            return Object.assign({},state,{...state,playist:[...fullPlayst]});
 
         case Actions.SHUFFLE_LIST:
             let list = Object.assign([],state.playist);
@@ -47,7 +47,10 @@ const playistReducer = (state=initialState,action) => {
                 }
             }
             const fullPlyist = list.map(item => item.id === action.payload.playlistId ? songlist : item);
-            return Object.assign([],state,{playist:fullPlyist});
+            return Object.assign([],state,{...state,playist:[...fullPlyist]});
+
+        case Actions.RETRIEVE_LOCAL_PLAYIST:
+            return action.payload;
 
         default:
             return state;

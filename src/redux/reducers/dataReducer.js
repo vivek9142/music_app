@@ -58,6 +58,10 @@ const dataReducer = (state=initialState,action) => {
             ...state,
             finalData:action.payload.data
           }
+
+        case dataActions.RETRIEVE_LOCAL:
+          return action.payload;
+
         default:
             return state;
     }

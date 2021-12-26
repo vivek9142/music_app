@@ -26,9 +26,10 @@ const AllSongs = (props) => {
                         dispatch(setFinalData(albums,photos));
                     }
         }
-
+        
         getData();
-    },[getData,photos]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[getData,photos,dispatch]);
 
     const handleFormChange = (val) => {
         setSearch(val);   

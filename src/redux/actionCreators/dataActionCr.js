@@ -1,10 +1,6 @@
 import dataActions from '../actions/dataActions'; 
 import fetchAPI from '../../api/ApiRequest';
 
-const setSearchData = (search) => {
-    return ({type:dataActions.SET_SEARCH,payload:search});
-}
-
 const getData = (url,entity) => {
     return async(dispatch) => {
         await dispatch({type:dataActions.GET_DATA_PENDING,payload:{
@@ -29,7 +25,7 @@ const getFinalData = () => {
     return async(dispatch) => {
         await dispatch(getData('https://jsonplaceholder.typicode.com/photos','photos'));
         await dispatch(getData('https://jsonplaceholder.typicode.com/albums','albums'));
-    }
+    }  
 }
 
 const setFinalData = (albums,photos) => {
@@ -43,4 +39,5 @@ const setFinalData = (albums,photos) => {
     }
     return ({type:dataActions.SET_FINAL_DATA,payload:{data:photos.splice(0,150)}})
 }
-export {setFinalData,getFinalData,setSearchData,getData} ;
+
+export {setFinalData,getFinalData,getData} ;
