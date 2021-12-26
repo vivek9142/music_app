@@ -28,6 +28,25 @@ const playistReducer = (state=initialState,action) => {
             const updatePlayist = state.playist.map(item => item.id === action.payload.playistId ? updatedPlayist : item);
             return {...state,playist:updatePlayist};
         
+        case Actions.DELETE_SONG_FROM_PLAYIST:
+            let playlst = Object.assign([], state.playist);         
+            let specificPlayist = playlst.filter(item => item.id === action.payload.playistId)[0];
+            let updatedSongs = specificPlayist.songs.filter(item => item.id !== action.payload.songId);
+            specificPlayist['songs'] = updatedSongs;
+            const fullPlayst = [...playlst.map(item => item.id === action.payload.playistId ? specificPlayist : item)];
+            
+            return Object.assign([],state,{playist:[...fullPlayst]});
+
+        case Actions.SHUFFLE_LIST:
+            let list = Object.assign([],state.playist);
+            let songlist = list.filter(item => item.id === action.payload.playistId)[0];
+            for(let i=songlist.songs.length-1;i>0;i--){
+                let j = Math.floor(Math.random()*(i+1));
+                [songlist.songs[i],songlist.songs[j]] = [songlist.songs[j],songlist.songs[i]];
+            }
+            const fullPlyist = list.map(item => item.id === action.payload.playlistId ? songlist : item);
+            return Object.assign([],state,{playist:fullPlyist});
+            
         default:
             return state;
     }

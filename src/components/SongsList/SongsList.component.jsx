@@ -1,14 +1,17 @@
 import {makeStyles,Card,CardActionArea,CardContent,Typography,CardMedia,CardActions,Button} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import {addSongsToPlayist} from '../../redux/actionCreators/playistActionCr';
+import {addSongsToPlayist,deleteSongFromPlayist} from '../../redux/actionCreators/playistActionCr';
 
 const SongsList = ({data,search='',...props}) => {
-    console.log(props.playistId);
     const dispatch = useDispatch();
     const classes = useStyles();
     const newData = data.filter(item => item.title.includes(search));
+
     const addSong = (playistId,item) => {
         dispatch(addSongsToPlayist(playistId,item))
+    }
+    const deleteSong = (playistId,songId) =>{
+        dispatch(deleteSongFromPlayist(playistId,songId));
     }
     return (
         <>
@@ -34,7 +37,7 @@ const SongsList = ({data,search='',...props}) => {
                 </CardContent>
                 <CardActions>
                 {props.addtoList ? (<Button size='small' color='primary' onClick={() => addSong(props.playistId,item)}>Add to List</Button>):(<></>)}
-                {props.delete ? (<Button size='small' color='primary'>Delete</Button>):(<></>)}
+                {props.delete ? (<Button size='small' color='primary' onClick={() => deleteSong(props.playistId,item.id)}>Delete</Button>):(<></>)}
             </CardActions>
             </div>
             
