@@ -21,7 +21,7 @@ const NavBar = () => {
         <div>
             <AppBar position='static' className={classes.navContainer}>
                 <Toolbar>
-                    <Typography variant='h5'>React-App</Typography>
+                    <Typography variant='h5'>Music App</Typography>
                     {user ?(<Typography variant='h6' className={classes.title}>{`Hello ${user}`}</Typography>):(<></>)}
                 </Toolbar>
             </AppBar>
