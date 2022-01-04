@@ -1,6 +1,8 @@
 # Music App
 Music App is an simple react application used for creating playists from Songs API and managing them as required. We can Manage overall all operations involved from creating playist to deleting songs in them.
 
+#### Deployment Website Link - [https://musicaapp.netlify.app/](https://musicaapp.netlify.app/)
+
 ## Features
 With this App -
 1. It Displays the songs in the Homepage Section which is stored by Redux state-management.
@@ -16,5 +18,3 @@ With this App -
 3. Start the Application using command `npm start`.The app will be served at http://localhost:3000
 4. Go to http://localhost:3000
 
-## Deployment Website Link - 
-[https://musicaapp.netlify.app/](https://musicaapp.netlify.app/)
